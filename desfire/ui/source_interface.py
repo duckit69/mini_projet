@@ -168,7 +168,14 @@ class SourceInterface(QWidget):
     def add_article_to_table(self):
         """Add selected article to table with default quantity of 1"""
         article_name = self.article_search_input.text().strip()
-        
+        if article_name == "0008598182":
+            article_name = "AR02"
+        elif article_name == "0003369556":
+            article_name = "AR01"
+        elif article_name == "0008619057":
+            article_name = "AR02"
+        else:
+            article_name = "AR01"
         # Check if article exists in database
         if article_name not in self.articles_by_content:
             print(f"Article '{article_name}' not found in database")

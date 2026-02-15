@@ -2,7 +2,7 @@
 from ..Models.article_model import ArticleModel
 
 # serializers
-from ..Serializers.article_serializer import ArticleSerializer
+from ..Serializers.article_serializer import ArticleSerializer, ArticleTagSerializer
 
 # generic APIs
 from rest_framework.generics import UpdateAPIView, ListAPIView, RetrieveAPIView, CreateAPIView, DestroyAPIView
@@ -49,6 +49,19 @@ class UpdateArticle(UpdateAPIView):
     # permission_classes = [IsAuthenticated, IsAdminUser]
     queryset = ArticleModel.objects.all()
     serializer_class = ArticleSerializer
+    http_method_names = ['patch']
+
+
+@method_decorator(
+    name="patch",
+    decorator=swagger_auto_schema(
+        tags=['Article-endpoints']
+    ),
+)
+class UpdateArticleTag(UpdateAPIView):
+    # permission_classes = [IsAuthenticated, IsAdminUser]
+    queryset = ArticleModel.objects.all()
+    serializer_class = ArticleTagSerializer
     http_method_names = ['patch']
 
 @method_decorator(

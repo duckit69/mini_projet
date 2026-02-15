@@ -97,7 +97,7 @@ class MainWindow(QMainWindow):
     def load_trucks_from_database(self):
         """Load trucks from your database"""
         # TODO: Replace with actual API call
-        url = "http://127.0.0.1:8000/api/CoreAPI/vehicule/list"
+        url = "http://127.0.0.1:8000/api/CoreAPI/vehicule/list?available=Free"
         response = requests.get(url)
         truck_list = response.json()
         return truck_list

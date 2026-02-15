@@ -12,7 +12,7 @@ class MissionSerializer(serializers.ModelSerializer):
         write_only=True
     )
     truck_id = serializers.CharField(source="truck.license_plate", read_only=True)
-    
+    truck_status = serializers.SerializerMethodField("update_truck_status")
     class Meta:
         model = MissionModel
         fields = "__all__"
@@ -23,3 +23,8 @@ class MissionSerializer(serializers.ModelSerializer):
         instance.mission_id = f"{PREFIX}{str(instance.pk).zfill(numeric_length)}"
         instance.save()
         return instance
+    
+    def update_truck_status(self, obj):
+        obj.truck.available = "Used"
+        obj.truck.save()
+        return "Used"

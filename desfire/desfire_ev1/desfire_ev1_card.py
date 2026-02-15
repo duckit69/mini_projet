@@ -14,14 +14,15 @@ class DesfireCard:
         - Card formatting
     """
 
-    def __init__(self, reader_index=0):
+    def __init__(self, reader_index=None):
         """
         Initialize connection to a smart card reader and connect to the card.
 
         :param reader_index: Index of PC/SC reader to use
         """
         r = readers()
-        self.reader = r[reader_index]
+
+        self.reader = [re for re in r if "CL" in str(re)][0]
         self.connection = self.reader.createConnection()
         self.connection.connect()
 

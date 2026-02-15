@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .Views.article_views import CreateArticle, UpdateArticle, RetrieveArticle, DestroyArticle, ListArticle
+from .Views.article_views import CreateArticle, UpdateArticle, RetrieveArticle, DestroyArticle, ListArticle, UpdateArticleTag
 from .Views.vehicule_views import CreateVehicule, UpdateVehicule, RetrieveVehicule, DestroyVehicule, ListVehicule
 from .Views.driver_views import CreateDriver, UpdateDriver, RetrieveDriver, DestroyDriver, ListDriver
 from .Views.tag_views import CreateTag, UpdateTag, RetrieveTag, DestroyTag, ListTag
@@ -11,6 +11,7 @@ urlpatterns = [
     # ARTICLE endpoints
     path('article/create', CreateArticle.as_view()),
     path('article/update/<int:pk>', UpdateArticle.as_view()),
+    path('article/update/tag/<int:pk>', UpdateArticleTag.as_view()),
     path('article/retreive/<int:pk>', RetrieveArticle.as_view()),
     path('article/delete/<int:pk>', DestroyArticle.as_view()),
     path('article/list', ListArticle.as_view()),

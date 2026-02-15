@@ -4,6 +4,9 @@ from ..Models.vehicule_model import VehiculeModel
 # serializers
 from ..Serializers.vehicule_serializer import VehiculeSerializer
 
+# filters
+from ..Filters.vehicule_filter import VehiculeFilter
+
 # generic APIs
 from rest_framework.generics import UpdateAPIView, ListAPIView, RetrieveAPIView, CreateAPIView, DestroyAPIView
 
@@ -85,3 +88,4 @@ class ListVehicule(ListAPIView):
     # permission_classes = [IsAuthenticated, IsAdminUser]
     queryset = VehiculeModel.objects.all()
     serializer_class = VehiculeSerializer
+    filterset_class = VehiculeFilter
